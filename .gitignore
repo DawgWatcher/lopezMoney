@@ -1,0 +1,10 @@
+credentials.json
+.env
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+.venv2/
+.lock
+*.xlsx

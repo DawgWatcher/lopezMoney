@@ -1,0 +1,14 @@
+[project]
+name = "finance-enforcer"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp",
+    "google-api-python-client",
+    "google-auth",
+    "google-auth-oauthlib",
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.backends._legacy:_Backend"
