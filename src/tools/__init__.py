@@ -5,6 +5,7 @@ from src.tools.get_category_summary import get_category_summary
 from src.tools.update_transaction_category import update_transaction_category
 from src.tools.update_transaction_scope import update_transaction_scope
 from src.tools.split_mixed_transaction import split_mixed_transaction
+from src.tools.append_autocat_rule import append_autocat_rule
 
 __all__ = [
     "get_transactions",
@@ -14,4 +15,5 @@ __all__ = [
     "update_transaction_category",
     "update_transaction_scope",
     "split_mixed_transaction",
+    "append_autocat_rule",
 ]
