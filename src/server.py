@@ -7,6 +7,7 @@ from src.tools.get_category_summary import get_category_summary
 from src.tools.update_transaction_category import update_transaction_category
 from src.tools.update_transaction_scope import update_transaction_scope
 from src.tools.split_mixed_transaction import split_mixed_transaction
+from src.tools.append_autocat_rule import append_autocat_rule
 
 mcp = FastMCP("finance-enforcer")
 
@@ -130,6 +131,38 @@ def tool_split_mixed_transaction(
         transaction_id=transaction_id,
         business_amount=business_amount,
         personal_amount=personal_amount,
+    )
+
+
+@mcp.tool()
+def tool_append_autocat_rule(
+    category: str,
+    description_contains: str,
+    account_contains: str | None = None,
+    institution_contains: str | None = None,
+    amount_min: float | None = None,
+    amount_max: float | None = None,
+) -> dict:
+    """Append a new rule to the Tiller AutoCat tab.
+
+    Args:
+        category: Category name. Must exist in the Tiller Categories tab.
+        description_contains: Merchant string to match against transaction descriptions.
+        account_contains: Optional account name filter.
+        institution_contains: Optional institution name filter.
+        amount_min: Optional minimum transaction amount filter.
+        amount_max: Optional maximum transaction amount filter.
+
+    Writes a new row to AutoCat so Tiller will auto-categorize future
+    matching transactions. Validates the category first.
+    """
+    return append_autocat_rule(
+        category=category,
+        description_contains=description_contains,
+        account_contains=account_contains,
+        institution_contains=institution_contains,
+        amount_min=amount_min,
+        amount_max=amount_max,
     )
 
 
